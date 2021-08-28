@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:turkey_news/model/article_model.dart';
+import 'package:turkey_news/model/covid_model.dart';
 
 //Now let's make the HTTP request services
 // this class will alows us to make a simple get http request
@@ -155,4 +157,32 @@ class ApiService {
       throw ("Can't get the Articles");
     }
   }
+
+  var url = "https://api.collectapi.com/corona/countriesData?country=Turkey";
+
+  Map<String, String> headers = {
+    HttpHeaders.authorizationHeader: "apikey 6rzDJTIZ8zmdE16C8bhRWi:1gF8lAE2Rue7VDBWbw9PoE",
+    HttpHeaders.contentTypeHeader: "application/json"
+  };
+
+  Future<List<Result>> getCovid() async {
+    Response res = await http.get(Uri.parse(url),headers: headers);
+
+    //first of all let's check that we got a 200 statu code: this mean that the request was a succes
+    if (res.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(res.body);
+
+      List<dynamic> body = json['result'];
+
+      //this line will allow us to get the different articles from the json file and putting them into a list
+      List<Result> result =
+      body.map((dynamic item) => Result.fromJson(item)).toList();
+
+      return result;
+    } else {
+      throw ("Can't get the Articles");
+    }
+  }
+
+
 }
