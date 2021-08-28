@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:turkey_news/services/api_service.dart';
 import 'components/custom_list_tile.dart';
+import 'covid.dart';
 import 'model/article_model.dart';
 
 void main() {
@@ -42,14 +43,30 @@ class _HomePageState extends State<HomePage> {
     const Icon(
       Icons.bookmark,
     ),
-    const Icon(Icons.health_and_safety,color: Colors.white,),
-    const Icon(Icons.business_center_sharp,color: Colors.white,),
-    const Icon(Icons.movie_filter_outlined,color: Colors.white,),
     const Icon(
-      Icons.science_outlined,color: Colors.white,
+      Icons.health_and_safety,
+      color: Colors.white,
     ),
-    const Icon(Icons.fitness_center,color: Colors.white,),
-    const Icon(Icons.title,color: Colors.white,),
+    const Icon(
+      Icons.business_center_sharp,
+      color: Colors.white,
+    ),
+    const Icon(
+      Icons.movie_filter_outlined,
+      color: Colors.white,
+    ),
+    const Icon(
+      Icons.science_outlined,
+      color: Colors.white,
+    ),
+    const Icon(
+      Icons.fitness_center,
+      color: Colors.white,
+    ),
+    const Icon(
+      Icons.title,
+      color: Colors.white,
+    ),
   ];
 
   @override
@@ -60,8 +77,21 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: const Text("YILDIZ HABER", style: TextStyle(color: Colors.white)),
+        title:
+            const Text("YILDIZ HABER", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.info,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CovidVeri()));
+            },
+          ),
+        ],
       ),
 
       //Now let's call the APi services with futurebuilder wiget
@@ -221,10 +251,11 @@ class _HomePageState extends State<HomePage> {
                                                 return ListView.builder(
                                                   //Now let's create our custom List tile
                                                   itemCount: articles.length,
-                                                  itemBuilder: (context, index) =>
-                                                      customListTile(
-                                                          articles[index],
-                                                          context),
+                                                  itemBuilder:
+                                                      (context, index) =>
+                                                          customListTile(
+                                                              articles[index],
+                                                              context),
                                                 );
                                               }
                                               return const Center(
@@ -246,7 +277,8 @@ class _HomePageState extends State<HomePage> {
                                                         snapshot.data;
                                                     return ListView.builder(
                                                       //Now let's create our custom List tile
-                                                      itemCount: articles.length,
+                                                      itemCount:
+                                                          articles.length,
                                                       itemBuilder: (context,
                                                               index) =>
                                                           customListTile(
@@ -263,11 +295,11 @@ class _HomePageState extends State<HomePage> {
                                             : currentIndex == 6
                                                 ? FutureBuilder(
                                                     future: client.getTech(),
-                                                    builder:
-                                                        (BuildContext context,
-                                                            AsyncSnapshot<
-                                                                    List<Article>>
-                                                                snapshot) {
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<
+                                                                List<Article>>
+                                                            snapshot) {
                                                       //let's check if we got a response or not
                                                       if (snapshot.hasData) {
                                                         //Now let's make a list of articles
@@ -280,7 +312,8 @@ class _HomePageState extends State<HomePage> {
                                                           itemBuilder: (context,
                                                                   index) =>
                                                               customListTile(
-                                                                  articles[index],
+                                                                  articles[
+                                                                      index],
                                                                   context),
                                                         );
                                                       }
