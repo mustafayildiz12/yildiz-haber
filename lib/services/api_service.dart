@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:turkey_news/model/article_model.dart';
 import 'package:turkey_news/model/covid_model.dart';
+import 'package:turkey_news/model/weather_model.dart';
 
 //Now let's make the HTTP request services
 // this class will alows us to make a simple get http request
@@ -183,8 +184,26 @@ class ApiService {
       throw ("Can't get the Articles");
     }
   }
-  String formater(String url) {
-    return baseUrl + url;
+
+
+  var weatherUrl = "https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=adana";
+  Future<List<Results>> getWeather() async {
+    Response res = await http.get(Uri.parse(weatherUrl),headers: headers);
+
+    //first of all let's check that we got a 200 statu code: this mean that the request was a succes
+    if (res.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(res.body);
+
+      List<dynamic> body = json['result'];
+
+      //this line will allow us to get the different articles from the json file and putting them into a list
+      List<Results> result =
+      body.map((dynamic item) => Results.fromJson(item)).toList();
+
+      return result;
+    } else {
+      throw ("Can't get the Articles");
+    }
   }
 
 

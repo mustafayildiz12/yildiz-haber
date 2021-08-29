@@ -17,7 +17,7 @@ class CovidVeri extends StatefulWidget {
 class _CovidVeriState extends State<CovidVeri> {
   ApiService client = ApiService();
 
-  TextEditingController t1 = TextEditingController();
+  //TextEditingController t1 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,6 @@ class _CovidVeriState extends State<CovidVeri> {
           builder:
               (BuildContext context, AsyncSnapshot<List<Result>> snapshot) {
             if (snapshot.hasData) {
-              //Now let's make a list of articles
               List<Result>? result = snapshot.data;
               return ListView.builder(
                   shrinkWrap: true,
