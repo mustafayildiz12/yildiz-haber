@@ -158,7 +158,7 @@ class ApiService {
     }
   }
 
-  var url = "https://api.collectapi.com/corona/countriesData?country=Turkey";
+  var baseUrl = "https://api.collectapi.com/corona/countriesData?country=Turkey";
 
   Map<String, String> headers = {
     HttpHeaders.authorizationHeader: "apikey 6rzDJTIZ8zmdE16C8bhRWi:1gF8lAE2Rue7VDBWbw9PoE",
@@ -166,7 +166,7 @@ class ApiService {
   };
 
   Future<List<Result>> getCovid() async {
-    Response res = await http.get(Uri.parse(url),headers: headers);
+    Response res = await http.get(Uri.parse(baseUrl),headers: headers);
 
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
     if (res.statusCode == 200) {
@@ -182,6 +182,9 @@ class ApiService {
     } else {
       throw ("Can't get the Articles");
     }
+  }
+  String formater(String url) {
+    return baseUrl + url;
   }
 
 
