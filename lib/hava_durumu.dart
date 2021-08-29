@@ -24,18 +24,19 @@ class _HavaDurumuState extends State<HavaDurumu> {
         builder: (BuildContext context, AsyncSnapshot<List<Results>> snapshot) {
           if (snapshot.hasData) {
             List<Results>? results = snapshot.data;
-            return ListView.builder(
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 250,
+                  childAspectRatio: 1/1.6,
+                  crossAxisSpacing: 0,
+                  mainAxisSpacing: 0),
               shrinkWrap: true,
               itemCount: results!.length,
-              itemBuilder: (context, index) => Column(
-                children: [
-                  havaContainer(
-                    results[index].day,
-                    results[index].description,
-                    results[index].degree +" C",
-                    results[index].icon,
-                  ),
-                ],
+              itemBuilder: (context, index) => havaContainer(
+                results[index].day,
+                results[index].description,
+                results[index].degree + " C",
+                results[index].icon,
               ),
             );
           }
@@ -51,8 +52,6 @@ class _HavaDurumuState extends State<HavaDurumu> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: Container(
-        width: 320,
-        height: 450,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -65,36 +64,33 @@ class _HavaDurumuState extends State<HavaDurumu> {
               gun,
               style: TextStyle(
                 color: Color(0xFF8AD6F1),
-                fontSize: 38,
+                fontSize: 27,
               ),
             ),
             SizedBox(
-              height: 25,
+              height: 5,
             ),
-           Container(
-             width: 140,
-             height: 135,
-             child: SvgPicture.network(url,fit: BoxFit.cover,),
-           ),
+            Container(
+              width: 130,
+              height: 120,
+              child: SvgPicture.network(
+                url,
+                fit: BoxFit.cover,
+              ),
+            ),
             SizedBox(
-              height: 25,
+              height: 5,
             ),
             Text(
               durum,
-              style: TextStyle(
-                color: Color(0xFF8AD6F1),
-                fontSize: 25,
-              ),
+              style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 22),
             ),
             SizedBox(
-              height: 25,
+              height: 5,
             ),
             Text(
               deger,
-              style: TextStyle(
-                color: Color(0xFF8AD6F1),
-                fontSize: 24,
-              ),
+              style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 18),
             ),
           ],
         ),
