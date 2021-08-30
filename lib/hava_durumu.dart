@@ -14,82 +14,90 @@ class HavaDurumu extends StatefulWidget {
 class _HavaDurumuState extends State<HavaDurumu> {
   ApiService hava = ApiService();
   TextEditingController t1 = TextEditingController();
+  final key = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xFF8AD6F1),
-      body: Column(
-        children: [
-          Container(
-            height: 42,
-            margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
-              border: Border.all(color: Colors.black26),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: TextField(
-              onChanged: (val) {
-               setState(() {
-                 t1.text = val;
-               });
-              },
-              controller: t1,
-              decoration: InputDecoration(
-                icon: Icon(Icons.search, color: Colors.black),
-                suffixIcon: t1.text.isNotEmpty
-                    ? GestureDetector(
-                  child: Icon(Icons.close, color: Colors.black),
-                  onTap: () {
-                    t1.clear();
-
-                    FocusScope.of(context).requestFocus(FocusNode());
-                  },
-                )
-                    : null,
-                hintText:"Arama yapın",
-                hintStyle: TextStyle(color: Colors.black54),
-                border: InputBorder.none,
-              ),
-              style: TextStyle(color: Colors.black,
-            ),
-          ),
-          ),
-
-          Expanded(
-            child: FutureBuilder(
-              future: hava.getWeather("adana"),
-              builder: (BuildContext context, AsyncSnapshot<List<Results>> snapshot) {
-                if (snapshot.hasData) {
-                  List<Results>? results = snapshot.data;
-                  return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 250,
-                        childAspectRatio: 1/1.6,
-                        crossAxisSpacing: 0,
-                        mainAxisSpacing: 0),
-                    shrinkWrap: true,
-                    itemCount: results!.length,
-                    itemBuilder: (context, index) => havaContainer(
-                      results[index].day,
-                      results[index].description,
-                      results[index].degree + " C",
-                      results[index].icon,
+            backgroundColor: Color(0xFF8AD6F1),
+            body: Column(
+              children: [
+                Form(
+                  key: key,
+                  child: Container(
+                    height: 42,
+                    margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black26),
                     ),
-                  );
-                }
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            ),
-          ),
-        ],
-      )
-    ));
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: TextField(
+
+                      controller: t1,
+                      focusNode: FocusNode(),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.search, color: Colors.black),
+
+                        suffixIcon: t1.text.isNotEmpty
+                            ? GestureDetector(
+                          child: Icon(Icons.close, color: Colors.black),
+                          onTap: () {
+                            t1.clear();
+                            FocusScope.of(context)
+                                .requestFocus(FocusNode());
+                          },
+                        )
+                            : null,
+                        hintText: "Arama yapın",
+                        hintStyle: TextStyle(color: Colors.black54),
+                        border: InputBorder.none,
+                      ),
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          t1.text = val;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: FutureBuilder(
+                    future: hava.getWeather("&data.city=${t1.text}"),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Results>> snapshot) {
+                      if (snapshot.hasData) {
+                        List<Results>? results = snapshot.data;
+                        return GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 250,
+                                  childAspectRatio: 1 / 1.6,
+                                  crossAxisSpacing: 0,
+                                  mainAxisSpacing: 0),
+                          shrinkWrap: true,
+                          itemCount: results!.length,
+                          itemBuilder: (context, index) => havaContainer(
+                            results[index].day,
+                            results[index].description,
+                            results[index].degree + " C",
+                            results[index].icon,
+                          ),
+                        );
+                      }
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            )));
   }
 
   Widget havaContainer(String gun, String durum, String deger, String url) {

@@ -184,11 +184,11 @@ class ApiService {
   }
 
 
-  var weatherUrl = "https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=adana";
+  var weatherUrl = "https://api.collectapi.com/weather/getWeather?data.lang=tr";
   Future<List<Results>> getWeather(String url) async {
 
     url = formater(url);
-    Response res = await http.get(Uri.parse(weatherUrl),headers: headers);
+    Response res = await http.get(Uri.parse(url),headers: headers);
 
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
     if (res.statusCode == 200) {
@@ -210,10 +210,10 @@ class ApiService {
     return weatherUrl + url;
   }
 
-  var namazUrl = "https://api.collectapi.com/pray/all?data.city=adana";
-  Future<List<Resultn>> getNamaz() async {
-
-    Response res = await http.get(Uri.parse(namazUrl),headers: headers);
+  var namazUrl = "https://api.collectapi.com/pray/all";
+  Future<List<Resultn>> getNamaz(String urx) async {
+    urx = namazArama(urx);
+    Response res = await http.get(Uri.parse(urx),headers: headers);
 
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
     if (res.statusCode == 200) {
@@ -229,6 +229,9 @@ class ApiService {
     } else {
       throw ("Can't get the Articles");
     }
+  }
+  String namazArama(String urx) {
+    return namazUrl + urx;
   }
 
 

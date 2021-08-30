@@ -13,6 +13,7 @@ class NamazVakitleri extends StatefulWidget {
 
 class _NamazVakitleriState extends State<NamazVakitleri> {
   ApiService namaz = ApiService();
+  TextEditingController t1 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +26,76 @@ class _NamazVakitleriState extends State<NamazVakitleri> {
             style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
       ),
-      body: FutureBuilder(
-        future: namaz.getNamaz(),
-        builder: (BuildContext context, AsyncSnapshot<List<Resultn>> snapshot) {
-          if (snapshot.hasData) {
-            List<Resultn>? results = snapshot.data;
-            return GridView.builder(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 250,
-                  childAspectRatio: 1 / 1.6,
-                  crossAxisSpacing: 0,
-                  mainAxisSpacing: 0),
-              shrinkWrap: true,
-              itemCount: results!.length,
-              itemBuilder: (context, index) => namazBox(
-                results[index].vakit,
-                results[index].saat,
+      body: Column(
+        children: [
+          Container(
+            height: 42,
+            margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.white,
+              border: Border.all(color: Colors.black26),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: TextField(
+
+              controller: t1,
+              decoration: InputDecoration(
+                icon: Icon(Icons.search, color: Colors.black),
+
+                      suffixIcon: t1.text.isNotEmpty
+                          ? GestureDetector(
+                        child: Icon(Icons.close, color: Colors.black),
+                        onTap: () {
+                          t1.clear();
+                          FocusScope.of(context)
+                              .requestFocus(FocusNode());
+                        },
+                      )
+                          : null,
+
+                hintText: "Arama yapın",
+                hintStyle: TextStyle(color: Colors.black54),
+                border: InputBorder.none,
               ),
-            );
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      ),
+              style: TextStyle(
+                color: Colors.black,
+              ),
+              onChanged: (val) {
+                setState(() {
+                  t1.text = val;
+                });
+              },
+            ),
+          ),
+          Expanded(
+            child: FutureBuilder(
+              future: namaz.getNamaz("?data.city=${t1.text}"),
+              builder: (BuildContext context, AsyncSnapshot<List<Resultn>> snapshot) {
+                if (snapshot.hasData) {
+                  List<Resultn>? results = snapshot.data;
+                  return GridView.builder(
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 250,
+                        childAspectRatio: 1 / 1.6,
+                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 0),
+                    shrinkWrap: true,
+                    itemCount: results!.length,
+                    itemBuilder: (context, index) => namazBox(
+                      results[index].vakit,
+                      results[index].saat,
+                    ),
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
+          ),
+        ],
+      )
     );
   }
 
