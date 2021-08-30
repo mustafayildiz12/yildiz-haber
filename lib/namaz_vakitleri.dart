@@ -25,7 +25,7 @@ class _NamazVakitleriState extends State<NamazVakitleri> {
           centerTitle: true,
           title: const Text("NAMAZ VAKİTLERİ",
               style: TextStyle(color: Colors.white)),
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFF881B1B),
         ),
         body: Column(
           children: [
@@ -72,7 +72,8 @@ class _NamazVakitleriState extends State<NamazVakitleri> {
               ),
             ),
             t1.text.isEmpty
-                ? Center(child: Text("Bilgi almak istediğiniz şehir ismini giriniz"))
+                ? Center(
+                    child: Text("Bilgi almak istediğiniz şehir ismini giriniz"))
                 : Expanded(
                     child: FutureBuilder(
                       future: namaz.getNamaz("?data.city=${t1.text}"),

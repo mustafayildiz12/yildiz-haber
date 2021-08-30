@@ -1,12 +1,8 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttericon/iconic_icons.dart';
-
 import 'package:fluttericon/typicons_icons.dart';
-
 import 'package:turkey_news/covid.dart';
 import 'package:turkey_news/pages/home_page.dart';
-
 import 'hava_durumu.dart';
 import 'namaz_vakitleri.dart';
 
@@ -16,7 +12,11 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
+  Color first = Color(0xFFD11717);
+  Color second = Color(0xFF006D61);
+  Color third = Color(0xFF2290B7);
+  Color fourth = Color(0xFF881B1B);
 
   static List<Widget> _widgetOptions = <Widget>[
     Center(child: HomePage()),
@@ -33,11 +33,27 @@ class _TabsPageState extends State<TabsPage> {
       ),
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.black,
+          barBackgroundColor: _selectedIndex == 0
+              ? first
+              : _selectedIndex == 1
+                  ? second
+                  : _selectedIndex == 2
+                      ? third
+                      : _selectedIndex == 3
+                          ? fourth
+                          : Colors.white,
           selectedItemBorderColor: Colors.transparent,
-          selectedItemBackgroundColor: Colors.black,
+          selectedItemBackgroundColor: _selectedIndex == 0
+              ? first
+              : _selectedIndex == 1
+                  ? second
+                  : _selectedIndex == 2
+                      ? third
+                      : _selectedIndex == 3
+                          ? fourth
+                          : Colors.white,
           selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.black,
+          selectedItemLabelColor: Colors.white,
           unselectedItemIconColor: Colors.white,
           showSelectedItemShadow: false,
           barHeight: 70,
@@ -56,17 +72,41 @@ class _TabsPageState extends State<TabsPage> {
           FFNavigationBarItem(
             iconData: Icons.masks_outlined,
             label: 'COVİD-19',
-            selectedBackgroundColor: Colors.black,
+            selectedBackgroundColor: _selectedIndex == 0
+                ? first
+                : _selectedIndex == 1
+                    ? second
+                    : _selectedIndex == 2
+                        ? third
+                        : _selectedIndex == 3
+                            ? fourth
+                            : Colors.white,
           ),
           FFNavigationBarItem(
             iconData: Typicons.cloud_sun,
             label: 'METEOROLOJİ',
-            selectedBackgroundColor: Colors.black,
+            selectedBackgroundColor: _selectedIndex == 0
+                ? first
+                : _selectedIndex == 1
+                    ? second
+                    : _selectedIndex == 2
+                        ? third
+                        : _selectedIndex == 3
+                            ? fourth
+                            : Colors.white,
           ),
           FFNavigationBarItem(
             iconData: Typicons.clock,
             label: 'NAMAZ ',
-            selectedBackgroundColor: Colors.black,
+            selectedBackgroundColor: _selectedIndex == 0
+                ? first
+                : _selectedIndex == 1
+                    ? second
+                    : _selectedIndex == 2
+                        ? third
+                        : _selectedIndex == 3
+                            ? fourth
+                            : Colors.white,
           ),
         ],
       ),

@@ -3,7 +3,6 @@ import 'package:turkey_news/components/custom_list_tile.dart';
 import 'package:turkey_news/model/article_model.dart';
 import 'package:turkey_news/services/api_service.dart';
 
-import '../covid.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -64,7 +63,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title:
             const Text("YILDIZ HABER", style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFFD11717),
       ),
       body: SingleChildScrollView(
         child: Column(

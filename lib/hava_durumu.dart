@@ -25,7 +25,7 @@ class _HavaDurumuState extends State<HavaDurumu> {
               centerTitle: true,
               title: const Text("HAVA DURUMU",
                   style: TextStyle(color: Colors.white)),
-              backgroundColor: Colors.black,
+              backgroundColor: Color(0xFF2290B7),
             ),
             backgroundColor: Color(0xFF8AD6F1),
             body: Column(

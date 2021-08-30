@@ -28,7 +28,7 @@ class _CovidVeriState extends State<CovidVeri> {
           centerTitle: true,
           title: const Text("COVİD-19 VERİLERİ",
               style: TextStyle(color: Colors.white)),
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFF006D61),
         ),
         body: FutureBuilder(
           future: client.getCovid(),
