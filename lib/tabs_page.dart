@@ -1,5 +1,9 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/iconic_icons.dart';
+
+import 'package:fluttericon/typicons_icons.dart';
+
 import 'package:turkey_news/covid.dart';
 import 'package:turkey_news/pages/home_page.dart';
 
@@ -12,7 +16,7 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
     Center(child: HomePage()),
@@ -46,22 +50,21 @@ class _TabsPageState extends State<TabsPage> {
         },
         items: [
           FFNavigationBarItem(
-            iconData: Icons.computer,
+            iconData: Typicons.news,
             label: 'GÜNDEM',
           ),
           FFNavigationBarItem(
-            iconData: Icons.masks,
+            iconData: Icons.masks_outlined,
             label: 'COVİD-19',
             selectedBackgroundColor: Colors.black,
           ),
-
           FFNavigationBarItem(
-            iconData: Icons.storm,
+            iconData: Typicons.cloud_sun,
             label: 'METEOROLOJİ',
             selectedBackgroundColor: Colors.black,
           ),
           FFNavigationBarItem(
-            iconData: Icons.mark_chat_unread_rounded,
+            iconData: Typicons.clock,
             label: 'NAMAZ ',
             selectedBackgroundColor: Colors.black,
           ),

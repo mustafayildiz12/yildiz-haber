@@ -56,7 +56,7 @@ class _HavaDurumuState extends State<HavaDurumu> {
                                 },
                               )
                             : null,
-                        hintText: "Arama yapın",
+                        hintText: "Şehir adı",
                         hintStyle: TextStyle(color: Colors.black54),
                         border: InputBorder.none,
                       ),
@@ -73,37 +73,42 @@ class _HavaDurumuState extends State<HavaDurumu> {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: FutureBuilder(
-                    future:
-                        hava.getWeather("&data.city=${t1.text.toLowerCase()}"),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<List<Results>> snapshot) {
-                      if (snapshot.hasData) {
-                        List<Results>? results = snapshot.data;
-                        return GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 250,
-                                  childAspectRatio: 1 / 1.6,
-                                  crossAxisSpacing: 0,
-                                  mainAxisSpacing: 0),
-                          shrinkWrap: true,
-                          itemCount: results!.length,
-                          itemBuilder: (context, index) => havaContainer(
-                            results[index].day,
-                            results[index].description,
-                            results[index].degree + " C",
-                            results[index].icon,
-                          ),
-                        );
-                      }
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    },
-                  ),
-                ),
+                t1.text.isEmpty
+                    ? Text("Bilgi almak istediğiniz şehir ismini giriniz")
+                    : Expanded(
+                        child: FutureBuilder(
+                          future: hava.getWeather(
+                              "&data.city=${t1.text.toLowerCase()}"),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<Results>> snapshot) {
+                            if (snapshot.hasData) {
+                              List<Results>? results = snapshot.data;
+                              return GridView.builder(
+                                gridDelegate:
+                                    SliverGridDelegateWithMaxCrossAxisExtent(
+                                        maxCrossAxisExtent: 250,
+                                        childAspectRatio: 1 / 1.6,
+                                        crossAxisSpacing: 0,
+                                        mainAxisSpacing: 0),
+                                shrinkWrap: true,
+                                itemCount: results!.length,
+                                itemBuilder: (context, index) => havaContainer(
+                                  results[index].day,
+                                  results[index].description,
+                                  results[index].degree + " C",
+                                  results[index].icon,
+                                ),
+                              );
+                            }
+
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                strokeWidth: 4,
+                                color: Colors.white,),
+                            );
+                          },
+                        ),
+                      ),
               ],
             )));
   }
@@ -122,13 +127,14 @@ class _HavaDurumuState extends State<HavaDurumu> {
           children: [
             Text(
               gun,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF8AD6F1),
                 fontSize: 27,
               ),
             ),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
             Container(
               width: 130,
@@ -143,6 +149,7 @@ class _HavaDurumuState extends State<HavaDurumu> {
             ),
             Text(
               durum,
+              textAlign: TextAlign.center,
               style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 22),
             ),
             SizedBox(
@@ -150,6 +157,7 @@ class _HavaDurumuState extends State<HavaDurumu> {
             ),
             Text(
               deger,
+              textAlign: TextAlign.center,
               style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 18),
             ),
           ],
