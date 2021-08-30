@@ -20,6 +20,13 @@ class _HavaDurumuState extends State<HavaDurumu> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              centerTitle: true,
+              title: const Text("HAVA DURUMU",
+                  style: TextStyle(color: Colors.white)),
+              backgroundColor: Colors.black,
+            ),
             backgroundColor: Color(0xFF8AD6F1),
             body: Column(
               children: [
@@ -35,21 +42,19 @@ class _HavaDurumuState extends State<HavaDurumu> {
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: TextField(
-
                       controller: t1,
-                      focusNode: FocusNode(),
+                      autofocus: true,
                       decoration: InputDecoration(
                         icon: Icon(Icons.search, color: Colors.black),
-
                         suffixIcon: t1.text.isNotEmpty
                             ? GestureDetector(
-                          child: Icon(Icons.close, color: Colors.black),
-                          onTap: () {
-                            t1.clear();
-                            FocusScope.of(context)
-                                .requestFocus(FocusNode());
-                          },
-                        )
+                                child: Icon(Icons.close, color: Colors.black),
+                                onTap: () {
+                                  t1.clear();
+                                  FocusScope.of(context)
+                                      .requestFocus(FocusNode());
+                                },
+                              )
                             : null,
                         hintText: "Arama yapın",
                         hintStyle: TextStyle(color: Colors.black54),
@@ -60,7 +65,9 @@ class _HavaDurumuState extends State<HavaDurumu> {
                       ),
                       onChanged: (val) {
                         setState(() {
+                          TextSelection previousSelection = t1.selection;
                           t1.text = val;
+                          t1.selection = previousSelection;
                         });
                       },
                     ),
@@ -68,7 +75,8 @@ class _HavaDurumuState extends State<HavaDurumu> {
                 ),
                 Expanded(
                   child: FutureBuilder(
-                    future: hava.getWeather("&data.city=${t1.text}"),
+                    future:
+                        hava.getWeather("&data.city=${t1.text.toLowerCase()}"),
                     builder: (BuildContext context,
                         AsyncSnapshot<List<Results>> snapshot) {
                       if (snapshot.hasData) {
