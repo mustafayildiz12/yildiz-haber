@@ -186,8 +186,10 @@ class ApiService {
   }
 
 
-  var weatherUrl = "https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=adana";
-  Future<List<Results>> getWeather() async {
+  var weatherUrl = "https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=";
+  Future<List<Results>> getWeather(String url) async {
+
+    url = formater(url);
     Response res = await http.get(Uri.parse(weatherUrl),headers: headers);
 
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
@@ -204,6 +206,10 @@ class ApiService {
     } else {
       throw ("Can't get the Articles");
     }
+  }
+
+  String formater(String url) {
+    return weatherUrl + url;
   }
 
 

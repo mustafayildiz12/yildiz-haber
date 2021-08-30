@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final weather = weatherFromJson(jsonString);
 
 import 'dart:convert';
 
