@@ -4,11 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:turkey_news/model/article_model.dart';
 import 'package:turkey_news/model/covid_model.dart';
+import 'package:turkey_news/model/namaz_model.dart';
 import 'package:turkey_news/model/weather_model.dart';
 
-//Now let's make the HTTP request services
-// this class will alows us to make a simple get http request
-// from the API and get the Articles and then return a list of Articles
 
 class ApiService {
   var articleUrl =
@@ -186,7 +184,7 @@ class ApiService {
   }
 
 
-  var weatherUrl = "https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=";
+  var weatherUrl = "https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=adana";
   Future<List<Results>> getWeather(String url) async {
 
     url = formater(url);
@@ -210,6 +208,27 @@ class ApiService {
 
   String formater(String url) {
     return weatherUrl + url;
+  }
+
+  var namazUrl = "https://api.collectapi.com/pray/all?data.city=adana";
+  Future<List<Resultn>> getNamaz() async {
+
+    Response res = await http.get(Uri.parse(namazUrl),headers: headers);
+
+    //first of all let's check that we got a 200 statu code: this mean that the request was a succes
+    if (res.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(res.body);
+
+      List<dynamic> body = json['result'];
+
+      //this line will allow us to get the different articles from the json file and putting them into a list
+      List<Resultn> namaz =
+      body.map((dynamic item) => Resultn.fromJson(item)).toList();
+
+      return namaz;
+    } else {
+      throw ("Can't get the Articles");
+    }
   }
 
 

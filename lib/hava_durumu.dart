@@ -61,7 +61,7 @@ class _HavaDurumuState extends State<HavaDurumu> {
 
           Expanded(
             child: FutureBuilder(
-              future: hava.getWeather(t1.text),
+              future: hava.getWeather("adana"),
               builder: (BuildContext context, AsyncSnapshot<List<Results>> snapshot) {
                 if (snapshot.hasData) {
                   List<Results>? results = snapshot.data;

@@ -12,7 +12,7 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 3;
 
   static List<Widget> _widgetOptions = <Widget>[
     Center(child: HomePage()),
