@@ -1,10 +1,11 @@
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/typicons_icons.dart';
-import 'package:turkey_news/covid.dart';
+import 'package:turkey_news/pages/covid.dart';
 import 'package:turkey_news/pages/home_page.dart';
-import 'hava_durumu.dart';
-import 'namaz_vakitleri.dart';
+import '../constants/constants.dart';
+import '../pages/hava_durumu.dart';
+import '../pages/namaz_vakitleri.dart';
 
 class TabsPage extends StatefulWidget {
   @override
@@ -12,11 +13,8 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  int _selectedIndex = 3;
-  Color first = Color(0xFFD11717);
-  Color second = Color(0xFF006D61);
-  Color third = Color(0xFF2290B7);
-  Color fourth = Color(0xFF881B1B);
+  int _selectedIndex = 0;
+
 
   static List<Widget> _widgetOptions = <Widget>[
     Center(child: HomePage()),

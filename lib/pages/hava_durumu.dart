@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:turkey_news/components/main_app_bar.dart';
+import 'package:turkey_news/components/weather_box.dart';
+import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/services/api_service.dart';
 
-import 'model/weather_model.dart';
+import '../model/weather_model.dart';
 
 class HavaDurumu extends StatefulWidget {
   const HavaDurumu({Key? key}) : super(key: key);
@@ -20,13 +22,7 @@ class _HavaDurumuState extends State<HavaDurumu> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              centerTitle: true,
-              title: const Text("HAVA DURUMU",
-                  style: TextStyle(color: Colors.white)),
-              backgroundColor: Color(0xFF2290B7),
-            ),
+            appBar: mainAppBar(third, "HAVA DURUMU"),
             backgroundColor: Color(0xFF8AD6F1),
             body: Column(
               children: [
@@ -114,116 +110,5 @@ class _HavaDurumuState extends State<HavaDurumu> {
             )));
   }
 
-  Widget havaContainer(String gun, String durum, String deger, String url) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              gun,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF8AD6F1),
-                fontSize: 27,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: 130,
-              height: 120,
-              child: SvgPicture.network(
-                url,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              durum,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 22),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              deger,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Color(0xFF8AD6F1),
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
-/*
-SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  havaContainer(
-                    "BUGÜN",
-                    "Açık",
-                    "30/12",
-                    Icon(
-                      Icons.wb_sunny,
-                      size: 36,
-                      color: Colors.amberAccent,
-                    ),
-                  ),
-                  havaContainer(
-                    "YARIN",
-                    "Bulutlu",
-                    "24/8",
-                    Icon(
-                      Icons.cloud,
-                      size: 36,
-                      color: Colors.grey.shade700,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  havaContainer(
-                    "ÇARŞAMBA",
-                    "Açık",
-                    "30/12",
-                    Icon(
-                      Icons.wb_sunny,
-                      size: 36,
-                      color: Colors.amberAccent,
-                    ),
-                  ),
-                  havaContainer(
-                    "PERŞEMBE",
-                    "Yağmurlu",
-                    "24/8",
-                    Icon(
-                      Icons.cloud,
-                      size: 36,
-                      color: Colors.grey.shade700,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
- */

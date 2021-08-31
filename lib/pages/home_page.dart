@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turkey_news/components/custom_list_tile.dart';
+import 'package:turkey_news/components/main_app_bar.dart';
+import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/model/article_model.dart';
 import 'package:turkey_news/services/api_service.dart';
 
@@ -58,13 +60,7 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        title:
-            const Text("YILDIZ HABER", style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(0xFFD11717),
-      ),
+      appBar: mainAppBar(first, "SICAK GÜNDEM"),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

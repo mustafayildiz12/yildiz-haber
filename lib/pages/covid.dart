@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:turkey_news/components/covid_box.dart';
+import 'package:turkey_news/components/main_app_bar.dart';
+import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/model/covid_model.dart';
 import 'package:turkey_news/services/api_service.dart';
 
@@ -23,13 +26,7 @@ class _CovidVeriState extends State<CovidVeri> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xFF53ADA1),
-        appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          title: const Text("COVİD-19 VERİLERİ",
-              style: TextStyle(color: Colors.white)),
-          backgroundColor: Color(0xFF006D61),
-        ),
+        appBar: mainAppBar(second, "COVİD 19 VERİLERİ"),
         body: FutureBuilder(
           future: client.getCovid(),
           builder:
@@ -130,35 +127,5 @@ class _CovidVeriState extends State<CovidVeri> {
         ));
   }
 
-  Widget vakaBox(String baslik, String data) {
-    return Container(
-      width: 145,
-      height: 190,
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(baslik,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, color: Color(0xFF53ADA1))),
-          SizedBox(
-            height: 25,
-          ),
-          Container(
-            alignment: Alignment.center,
-            width: 100,
-            height: 40,
-            decoration: BoxDecoration(
-              color: Color(0xFF0A8477),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child:
-                Text(data, style: TextStyle(fontSize: 18, color: Colors.white)),
-          ),
-        ],
-      ),
-    );
-  }
+
 }
