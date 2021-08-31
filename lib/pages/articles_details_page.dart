@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/model/article_model.dart';
 
 class ArticlePage extends StatelessWidget {
@@ -11,7 +12,7 @@ class ArticlePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(article.title,style: const TextStyle(color: Colors.white)),
-        backgroundColor: Colors.black,
+        backgroundColor: first,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

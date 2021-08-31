@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:turkey_news/services/api_service.dart';
-
+import 'package:turkey_news/services/doviz_api.dart';
 import '../components/main_app_bar.dart';
 import '../model/doviz_model.dart';
 
@@ -13,7 +12,8 @@ class DovizPage extends StatefulWidget {
 }
 
 class _DovizPageState extends State<DovizPage> {
-  ApiService para = ApiService();
+
+  DovizApi dovizApi = DovizApi();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class _DovizPageState extends State<DovizPage> {
                   ]),
                 ]),
             FutureBuilder(
-              future: para.getMoney(),
+              future: dovizApi.getMoney(),
               builder: (BuildContext context,
                   AsyncSnapshot<List<Result>> snapshot) {
                 if (snapshot.hasData) {

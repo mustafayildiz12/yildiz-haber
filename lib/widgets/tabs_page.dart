@@ -108,6 +108,7 @@ class _TabsPageState extends State<TabsPage> {
                             ? fourth
                             : Colors.orange,
           ),
+
           /*
           FFNavigationBarItem(
             iconData: Icons.monetization_on_outlined,
@@ -123,6 +124,7 @@ class _TabsPageState extends State<TabsPage> {
                 : Colors.orange,
           ),
            */
+
         ],
       ),
     );

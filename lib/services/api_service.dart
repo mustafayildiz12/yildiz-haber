@@ -5,7 +5,6 @@ import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:turkey_news/model/article_model.dart';
 import 'package:turkey_news/model/covid_model.dart';
-import 'package:turkey_news/model/doviz_model.dart';
 import 'package:turkey_news/model/namaz_model.dart';
 import 'package:turkey_news/model/weather_model.dart';
 
@@ -241,25 +240,5 @@ class ApiService {
     return namazUrl + urx;
   }
 
-  //DÖVİZ
-  var dovizUrl = "https://api.collectapi.com/economy/allCurrency";
 
-  Future<List<Result>> getMoney() async {
-    Response res = await http.get(Uri.parse(dovizUrl), headers: headers);
-    logger.i(res.body);
-    logger.i(res.statusCode);
-
-    //first of all let's check that we got a 200 statu code: this mean that the request was a succes
-    if (res.statusCode == 200) {
-      Map<String, dynamic> json = jsonDecode(res.body);
-
-      List<dynamic> body = json['result'];
-      List<Result> money =
-          body.map((dynamic item) => Result.fromJson(item)).toList();
-
-      return money;
-    } else {
-      throw ("Can't get the Articles");
-    }
-  }
 }
