@@ -46,18 +46,28 @@ class _CovidVeriState extends State<CovidVeri> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
+                                horizontal: 4, vertical: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(formattedDate,
-                                    style: TextStyle(
-                                        fontSize: 25, color: Colors.white))
+
+                                Text(
+                                  formattedDate,
+                                  style: TextStyle(
+                                      fontSize: 25, color: Colors.white),
+                                ),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 20,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 5),
+                            child: Text(
+                              "Günlük veriler akşam saatlerinde güncellenmektedir !!",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 18, color: Colors.white),
+                            ),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -75,7 +85,7 @@ class _CovidVeriState extends State<CovidVeri> {
                             ],
                           ),
                           SizedBox(
-                            height: 75.1,
+                            height: 45,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -93,7 +103,7 @@ class _CovidVeriState extends State<CovidVeri> {
                             ],
                           ),
                           SizedBox(
-                            height: 75.1,
+                            height: 45,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,

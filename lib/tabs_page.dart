@@ -2,6 +2,7 @@ import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:turkey_news/covid.dart';
+import 'package:turkey_news/doviz_page.dart';
 import 'package:turkey_news/pages/home_page.dart';
 import 'hava_durumu.dart';
 import 'namaz_vakitleri.dart';
@@ -23,6 +24,7 @@ class _TabsPageState extends State<TabsPage> {
     Center(child: CovidVeri()),
     Center(child: HavaDurumu()),
     Center(child: NamazVakitleri()),
+    Center(child: DovizPage()),
   ];
 
   @override
@@ -41,7 +43,7 @@ class _TabsPageState extends State<TabsPage> {
                       ? third
                       : _selectedIndex == 3
                           ? fourth
-                          : Colors.white,
+                          : Colors.orange,
           selectedItemBorderColor: Colors.transparent,
           selectedItemBackgroundColor: _selectedIndex == 0
               ? first
@@ -51,10 +53,11 @@ class _TabsPageState extends State<TabsPage> {
                       ? third
                       : _selectedIndex == 3
                           ? fourth
-                          : Colors.white,
+                          : Colors.orange,
           selectedItemIconColor: Colors.white,
           selectedItemLabelColor: Colors.white,
           unselectedItemIconColor: Colors.white,
+          unselectedItemLabelColor: Colors.white,
           showSelectedItemShadow: false,
           barHeight: 70,
         ),
@@ -71,7 +74,7 @@ class _TabsPageState extends State<TabsPage> {
           ),
           FFNavigationBarItem(
             iconData: Icons.masks_outlined,
-            label: 'COVİD-19',
+            label: '-19',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -80,11 +83,11 @@ class _TabsPageState extends State<TabsPage> {
                         ? third
                         : _selectedIndex == 3
                             ? fourth
-                            : Colors.white,
+                            : Colors.orange,
           ),
           FFNavigationBarItem(
             iconData: Typicons.cloud_sun,
-            label: 'METEOROLOJİ',
+            label: '',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -93,11 +96,11 @@ class _TabsPageState extends State<TabsPage> {
                         ? third
                         : _selectedIndex == 3
                             ? fourth
-                            : Colors.white,
+                            : Colors.orange,
           ),
           FFNavigationBarItem(
             iconData: Typicons.clock,
-            label: 'NAMAZ ',
+            label: '',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -106,7 +109,20 @@ class _TabsPageState extends State<TabsPage> {
                         ? third
                         : _selectedIndex == 3
                             ? fourth
-                            : Colors.white,
+                            : Colors.orange,
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.monetization_on_outlined,
+            label: '',
+            selectedBackgroundColor: _selectedIndex == 0
+                ? first
+                : _selectedIndex == 1
+                ? second
+                : _selectedIndex == 2
+                ? third
+                : _selectedIndex == 3
+                ? fourth
+                : Colors.orange,
           ),
         ],
       ),

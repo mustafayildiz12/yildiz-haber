@@ -38,12 +38,12 @@ class _HavaDurumuState extends State<HavaDurumu> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
-                      border: Border.all(color: Colors.black26),
+                      //border: Border.all(color: Colors.black26),
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: TextField(
+                    child: TextFormField(
                       controller: t1,
-                      autofocus: true,
+                      autofocus: false,
                       decoration: InputDecoration(
                         icon: Icon(Icons.search, color: Colors.black),
                         suffixIcon: t1.text.isNotEmpty
@@ -104,7 +104,8 @@ class _HavaDurumuState extends State<HavaDurumu> {
                             return const Center(
                               child: CircularProgressIndicator(
                                 strokeWidth: 4,
-                                color: Colors.white,),
+                                color: Colors.white,
+                              ),
                             );
                           },
                         ),
@@ -153,12 +154,15 @@ class _HavaDurumuState extends State<HavaDurumu> {
               style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 22),
             ),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
             Text(
               deger,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 18),
+              style: TextStyle(
+                  color: Color(0xFF8AD6F1),
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),

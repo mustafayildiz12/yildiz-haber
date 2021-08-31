@@ -37,12 +37,12 @@ class _NamazVakitleriState extends State<NamazVakitleri> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: Colors.white,
-                  border: Border.all(color: Colors.black26),
+                 // border: Border.all(color: Colors.black26.withOpacity(0.4)),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: TextField(
                   controller: t1,
-                  autofocus: true,
+                  autofocus: false,
                   decoration: InputDecoration(
                     icon: Icon(Icons.search, color: Colors.black),
                     suffixIcon: t1.text.isNotEmpty
