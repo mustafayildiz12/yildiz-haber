@@ -3,9 +3,11 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:logger/logger.dart';
 import 'package:turkey_news/model/doviz_model.dart';
 
 class DovizApi {
+  var logger = Logger();
 
   Map<String, String> headers = {
     HttpHeaders.authorizationHeader:
@@ -19,6 +21,8 @@ class DovizApi {
   Future<List<Result>> getMoney() async {
     Response res = await http.get(Uri.parse(dovizUrl), headers: headers);
 
+    logger.i(res.body);
+    logger.i(res.statusCode);
 
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
     if (res.statusCode == 200) {

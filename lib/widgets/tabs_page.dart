@@ -2,6 +2,7 @@ import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:turkey_news/pages/covid.dart';
+import 'package:turkey_news/pages/doviz_page.dart';
 import 'package:turkey_news/pages/home_page.dart';
 import '../constants/constants.dart';
 import '../pages/hava_durumu.dart';
@@ -21,7 +22,7 @@ class _TabsPageState extends State<TabsPage> {
     Center(child: CovidVeri()),
     Center(child: HavaDurumu()),
     Center(child: NamazVakitleri()),
-    //Center(child: DovizPage()),
+    Center(child: DovizPage()),
   ];
 
   @override
@@ -109,7 +110,6 @@ class _TabsPageState extends State<TabsPage> {
                             : Colors.orange,
           ),
 
-          /*
           FFNavigationBarItem(
             iconData: Icons.monetization_on_outlined,
             label: '',
@@ -123,7 +123,6 @@ class _TabsPageState extends State<TabsPage> {
                 ? fourth
                 : Colors.orange,
           ),
-           */
 
         ],
       ),
