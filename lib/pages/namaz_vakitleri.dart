@@ -19,6 +19,11 @@ class _NamazVakitleriState extends State<NamazVakitleri> {
   TextEditingController t1 = TextEditingController();
   final key = GlobalKey<FormFieldState>();
 
+  void getTap() {
+    t1.clear();
+    FocusScope.of(context).requestFocus(FocusNode());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,48 +31,46 @@ class _NamazVakitleriState extends State<NamazVakitleri> {
         appBar: mainAppBar(fourth, "NAMAZ VAKİTLERİ"),
         body: Column(
           children: [
-            Form(
-              key: key,
-              child: Container(
-                height: 42,
-                margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.white,
-                 // border: Border.all(color: Colors.black26.withOpacity(0.4)),
+            Container(
+              height: 42,
+              margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                // border: Border.all(color: Colors.black26.withOpacity(0.4)),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: TextField(
+                controller: t1,
+                autofocus: false,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.search, color: Colors.black),
+                  suffixIcon: t1.text.isNotEmpty
+                      ? GestureDetector(
+                          child: Icon(Icons.close, color: Colors.black),
+                          onTap: () {
+                            t1.clear();
+                            FocusScope.of(context).requestFocus(FocusNode());
+                          },
+                        )
+                      : null,
+                  hintText: "Şehir adı",
+                  hintStyle: TextStyle(color: Colors.black54),
+                  border: InputBorder.none,
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: TextField(
-                  controller: t1,
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.search, color: Colors.black),
-                    suffixIcon: t1.text.isNotEmpty
-                        ? GestureDetector(
-                            child: Icon(Icons.close, color: Colors.black),
-                            onTap: () {
-                              t1.clear();
-                              FocusScope.of(context).requestFocus(FocusNode());
-                            },
-                          )
-                        : null,
-                    hintText: "Şehir adı",
-                    hintStyle: TextStyle(color: Colors.black54),
-                    border: InputBorder.none,
-                  ),
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                  onChanged: (val) {
-                    setState(() {
-                      TextSelection previousSelection = t1.selection;
-                      t1.text = val;
-                      t1.selection = previousSelection;
-                    });
-                  },
+                style: TextStyle(
+                  color: Colors.black,
                 ),
+                onChanged: (val) {
+                  setState(() {
+                    TextSelection previousSelection = t1.selection;
+                    t1.text = val;
+                    t1.selection = previousSelection;
+                  });
+                },
               ),
             ),
+
             t1.text.isEmpty
                 ? Center(
                     child: Text("Bilgi almak istediğiniz şehir ismini giriniz"))
@@ -102,5 +105,4 @@ class _NamazVakitleriState extends State<NamazVakitleri> {
           ],
         ));
   }
-
 }
