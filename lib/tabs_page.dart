@@ -2,7 +2,6 @@ import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:turkey_news/covid.dart';
-import 'package:turkey_news/doviz_page.dart';
 import 'package:turkey_news/pages/home_page.dart';
 import 'hava_durumu.dart';
 import 'namaz_vakitleri.dart';
@@ -13,7 +12,7 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 3;
   Color first = Color(0xFFD11717);
   Color second = Color(0xFF006D61);
   Color third = Color(0xFF2290B7);
@@ -24,7 +23,7 @@ class _TabsPageState extends State<TabsPage> {
     Center(child: CovidVeri()),
     Center(child: HavaDurumu()),
     Center(child: NamazVakitleri()),
-    Center(child: DovizPage()),
+    //Center(child: DovizPage()),
   ];
 
   @override
@@ -74,7 +73,7 @@ class _TabsPageState extends State<TabsPage> {
           ),
           FFNavigationBarItem(
             iconData: Icons.masks_outlined,
-            label: '-19',
+            label: 'COVİD-19',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -87,7 +86,7 @@ class _TabsPageState extends State<TabsPage> {
           ),
           FFNavigationBarItem(
             iconData: Typicons.cloud_sun,
-            label: '',
+            label: 'METEOROLOJİ',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -100,7 +99,7 @@ class _TabsPageState extends State<TabsPage> {
           ),
           FFNavigationBarItem(
             iconData: Typicons.clock,
-            label: '',
+            label: 'NAMAZ',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -111,6 +110,7 @@ class _TabsPageState extends State<TabsPage> {
                             ? fourth
                             : Colors.orange,
           ),
+          /*
           FFNavigationBarItem(
             iconData: Icons.monetization_on_outlined,
             label: '',
@@ -124,6 +124,7 @@ class _TabsPageState extends State<TabsPage> {
                 ? fourth
                 : Colors.orange,
           ),
+           */
         ],
       ),
     );

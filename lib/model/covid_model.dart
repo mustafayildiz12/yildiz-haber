@@ -15,12 +15,12 @@ class Covid {
   });
 
   bool success;
-  List<Result> result;
+  List<Resultc> result;
 
   factory Covid.fromJson(Map<String, dynamic> json) => Covid(
         success: json["success"],
         result:
-            List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+            List<Resultc>.from(json["result"].map((x) => Resultc.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,8 +29,8 @@ class Covid {
       };
 }
 
-class Result {
-  Result({
+class Resultc {
+  Resultc({
     required this.country,
     required this.totalCases,
     required this.newCases,
@@ -48,7 +48,7 @@ class Result {
   String totalRecovered;
   String activeCases;
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory Resultc.fromJson(Map<String, dynamic> json) => Resultc(
         country: json["country"],
         totalCases: json["totalCases"],
         newCases: json["newCases"],

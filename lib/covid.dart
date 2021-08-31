@@ -33,9 +33,9 @@ class _CovidVeriState extends State<CovidVeri> {
         body: FutureBuilder(
           future: client.getCovid(),
           builder:
-              (BuildContext context, AsyncSnapshot<List<Result>> snapshot) {
+              (BuildContext context, AsyncSnapshot<List<Resultc>> snapshot) {
             if (snapshot.hasData) {
-              List<Result>? result = snapshot.data;
+              List<Resultc>? result = snapshot.data;
               return ListView.builder(
                   shrinkWrap: true,
                   itemCount: result!.length,

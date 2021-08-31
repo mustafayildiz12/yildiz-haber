@@ -169,7 +169,7 @@ class ApiService {
     HttpHeaders.contentTypeHeader: "application/json"
   };
 
-  Future<List<Result>> getCovid() async {
+  Future<List<Resultc>> getCovid() async {
     Response res = await http.get(Uri.parse(baseUrl), headers: headers);
 
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
@@ -179,8 +179,8 @@ class ApiService {
       List<dynamic> body = json['result'];
 
       //this line will allow us to get the different articles from the json file and putting them into a list
-      List<Result> result =
-          body.map((dynamic item) => Result.fromJson(item)).toList();
+      List<Resultc> result =
+          body.map((dynamic item) => Resultc.fromJson(item)).toList();
 
       return result;
     } else {
@@ -219,7 +219,8 @@ class ApiService {
   Future<List<Resultn>> getNamaz(String urx) async {
     urx = namazArama(urx);
     Response res = await http.get(Uri.parse(urx), headers: headers);
-
+    logger.i(res.body);
+    logger.i(res.statusCode);
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
     if (res.statusCode == 200) {
       Map<String, dynamic> json = jsonDecode(res.body);
@@ -243,7 +244,7 @@ class ApiService {
   //DÖVİZ
   var dovizUrl = "https://api.collectapi.com/economy/allCurrency";
 
-  Future<List<Resultd>> getMoney() async {
+  Future<List<Result>> getMoney() async {
     Response res = await http.get(Uri.parse(dovizUrl), headers: headers);
     logger.i(res.body);
     logger.i(res.statusCode);
@@ -252,9 +253,9 @@ class ApiService {
     if (res.statusCode == 200) {
       Map<String, dynamic> json = jsonDecode(res.body);
 
-      List<dynamic> body = json['results'];
-      List<Resultd> money =
-          body.map((dynamic item) => Resultd.fromJson(item)).toList();
+      List<dynamic> body = json['result'];
+      List<Result> money =
+          body.map((dynamic item) => Result.fromJson(item)).toList();
 
       return money;
     } else {
