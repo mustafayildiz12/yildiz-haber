@@ -72,7 +72,7 @@ class _TabsPageState extends State<TabsPage> {
           ),
           FFNavigationBarItem(
             iconData: Icons.masks_outlined,
-            label: 'COVİD-19',
+            label: 'COVİD',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -85,7 +85,7 @@ class _TabsPageState extends State<TabsPage> {
           ),
           FFNavigationBarItem(
             iconData: Typicons.cloud_sun,
-            label: 'METEOROLOJİ',
+            label: 'HAVA',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1
@@ -112,7 +112,7 @@ class _TabsPageState extends State<TabsPage> {
 
           FFNavigationBarItem(
             iconData: Icons.monetization_on_outlined,
-            label: '',
+            label: 'DÖVİZ',
             selectedBackgroundColor: _selectedIndex == 0
                 ? first
                 : _selectedIndex == 1

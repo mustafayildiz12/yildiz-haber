@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:turkey_news/components/green_box.dart';
+import 'package:turkey_news/components/red_box.dart';
 import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/services/doviz_api.dart';
 import '../components/main_app_bar.dart';
@@ -84,7 +86,7 @@ class _DovizPageState extends State<DovizPage> {
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.normal),
                                     ),
                                     redBox("${result[index].selling}"),
                                     greenBox("${result[index].buying}")
@@ -99,43 +101,5 @@ class _DovizPageState extends State<DovizPage> {
             )
           ],
         ));
-  }
-
-  Widget redBox(String param) {
-    return Container(
-      width: 70,
-      height: 30,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Color(0xFFFF0000),
-        // borderRadius: BorderRadius.circular(8),
-      ),
-      child: Text(
-        param,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-      ),
-    );
-  }
-
-  Widget greenBox(String param) {
-    return Container(
-      width: 70,
-      height: 30,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Color(0xFF04B14B),
-        //  borderRadius: BorderRadius.circular(8),
-      ),
-      child: Text(
-        param,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-      ),
-    );
   }
 }

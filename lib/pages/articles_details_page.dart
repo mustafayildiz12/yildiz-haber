@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turkey_news/components/article_detail.dart';
 import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/model/article_model.dart';
 
@@ -20,33 +21,11 @@ class ArticlePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 200.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                //let's add the height
-
-                image: DecorationImage(
-                    image: NetworkImage(article.urlToImage), fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-            ),
+            ImageContainer(article.urlToImage),
             const SizedBox(
               height: 8.0,
             ),
-            Container(
-              padding: const EdgeInsets.all(6.0),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Text(
-                article.source.name,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            detailBox(article.source.name),
             const SizedBox(
               height: 8.0,
             ),
@@ -62,4 +41,5 @@ class ArticlePage extends StatelessWidget {
       ),
     );
   }
+
 }

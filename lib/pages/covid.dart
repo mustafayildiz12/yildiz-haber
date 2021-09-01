@@ -20,8 +20,6 @@ class CovidVeri extends StatefulWidget {
 class _CovidVeriState extends State<CovidVeri> {
   ApiService client = ApiService();
 
-  //TextEditingController t1 = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,15 +54,19 @@ class _CovidVeriState extends State<CovidVeri> {
                               ],
                             ),
                           ),
+
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 5),
+                                horizontal: 4),
                             child: Text(
                               "Günlük veriler akşam saatlerinde güncellenmektedir !!",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 18, color: Colors.white),
                             ),
+                          ),
+                          SizedBox(
+                            height: 15,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -116,6 +118,9 @@ class _CovidVeriState extends State<CovidVeri> {
                                       ? "0"
                                       : result[index].totalRecovered)
                             ],
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                         ],
                       ));
