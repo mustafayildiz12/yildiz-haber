@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/services/doviz_api.dart';
 import '../components/main_app_bar.dart';
 import '../model/doviz_model.dart';
@@ -17,7 +18,7 @@ class _DovizPageState extends State<DovizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: mainAppBar(Colors.orange, "DÖVİZ"),
+        appBar: mainAppBar(fifth, "DÖVİZ"),
         backgroundColor: Color(0xFF8AD6F1),
         body: Column(
           children: [

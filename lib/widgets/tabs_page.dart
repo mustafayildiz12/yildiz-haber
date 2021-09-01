@@ -41,7 +41,7 @@ class _TabsPageState extends State<TabsPage> {
                       ? third
                       : _selectedIndex == 3
                           ? fourth
-                          : Colors.orange,
+                          : fifth,
           selectedItemBorderColor: Colors.transparent,
           selectedItemBackgroundColor: _selectedIndex == 0
               ? first
@@ -51,7 +51,7 @@ class _TabsPageState extends State<TabsPage> {
                       ? third
                       : _selectedIndex == 3
                           ? fourth
-                          : Colors.orange,
+                          : fifth,
           selectedItemIconColor: Colors.white,
           selectedItemLabelColor: Colors.white,
           unselectedItemIconColor: Colors.white,
@@ -81,7 +81,7 @@ class _TabsPageState extends State<TabsPage> {
                         ? third
                         : _selectedIndex == 3
                             ? fourth
-                            : Colors.orange,
+                            : fifth,
           ),
           FFNavigationBarItem(
             iconData: Typicons.cloud_sun,
@@ -94,7 +94,7 @@ class _TabsPageState extends State<TabsPage> {
                         ? third
                         : _selectedIndex == 3
                             ? fourth
-                            : Colors.orange,
+                            : fifth,
           ),
           FFNavigationBarItem(
             iconData: Typicons.clock,
@@ -107,7 +107,7 @@ class _TabsPageState extends State<TabsPage> {
                         ? third
                         : _selectedIndex == 3
                             ? fourth
-                            : Colors.orange,
+                            : fifth,
           ),
 
           FFNavigationBarItem(
@@ -121,7 +121,7 @@ class _TabsPageState extends State<TabsPage> {
                 ? third
                 : _selectedIndex == 3
                 ? fourth
-                : Colors.orange,
+                : fifth,
           ),
 
         ],
