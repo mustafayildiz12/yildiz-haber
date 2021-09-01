@@ -12,8 +12,7 @@ class DovizPage extends StatefulWidget {
 }
 
 class _DovizPageState extends State<DovizPage> {
-
-  DovizApi dovizApi = DovizApi();
+  DovizApi api = DovizApi();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class _DovizPageState extends State<DovizPage> {
         body: Column(
           children: [
             Table(
-                // border: TableBorder.all(width: 1, color: Colors.purple),
+                border: TableBorder.all(width: 0.1, color: Colors.white),
                 textDirection: TextDirection.ltr,
                 columnWidths: {
                   0: FixedColumnWidth(140),
@@ -58,73 +57,84 @@ class _DovizPageState extends State<DovizPage> {
                     ),
                   ]),
                 ]),
-            FutureBuilder(
-              future: dovizApi.getMoney(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<Result>> snapshot) {
-                if (snapshot.hasData) {
-                  List<Result>? result = snapshot.data;
-                  return ListView.builder(
-
-                      itemCount: result!.length,
-                      itemBuilder: (context, index) => Table(
-                              textDirection: TextDirection.ltr,
-                              columnWidths: {
-                                0: FixedColumnWidth(140),
-                                1: FlexColumnWidth(),
-                                2: FlexColumnWidth()
-                              },
-                              children: [
-                                TableRow(children: [
-                                  Text(
-                                    result[index].name,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 21,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    width: 70,
-                                    height: 30,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFFF0000),
-                                      // borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      result[index].buying,
+            Expanded(
+              child: FutureBuilder(
+                future: api.getMoney(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<Result>> snapshot) {
+                  if (snapshot.hasData) {
+                    List<Result>? result = snapshot.data;
+                    return ListView.builder(
+                        itemCount: result!.length,
+                        itemBuilder: (context, index) => Table(
+                                border: TableBorder.all(
+                                    width: 0.1, color: Colors.white),
+                                textDirection: TextDirection.ltr,
+                                columnWidths: {
+                                  0: FixedColumnWidth(140),
+                                  1: FlexColumnWidth(),
+                                  2: FlexColumnWidth()
+                                },
+                                children: [
+                                  TableRow(children: [
+                                    Text(
+                                      result[index].name,
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                      ),
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                  ),
-                                  Container(
-                                    width: 70,
-                                    height: 30,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF04B14B),
-                                      //  borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      result[index].selling,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                ]),
-                              ]));
-                }
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
+                                    redBox("${result[index].selling}"),
+                                    greenBox("${result[index].buying}")
+                                  ]),
+                                ]));
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
             )
           ],
         ));
+  }
+
+  Widget redBox(String param) {
+    return Container(
+      width: 70,
+      height: 30,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Color(0xFFFF0000),
+        // borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        param,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
+      ),
+    );
+  }
+
+  Widget greenBox(String param) {
+    return Container(
+      width: 70,
+      height: 30,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Color(0xFF04B14B),
+        //  borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        param,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
+      ),
+    );
   }
 }

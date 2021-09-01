@@ -11,7 +11,7 @@ class DovizApi {
 
   Map<String, String> headers = {
     HttpHeaders.authorizationHeader:
-    "apikey 6rzDJTIZ8zmdE16C8bhRWi:1gF8lAE2Rue7VDBWbw9PoE",
+    "apikey 7xKn1j9d7jLM4YQLbLSb18:7FCyvhdiC0LhOK1Ogkuxis",
     HttpHeaders.contentTypeHeader: "application/json"
   };
 
@@ -26,7 +26,7 @@ class DovizApi {
 
     //first of all let's check that we got a 200 statu code: this mean that the request was a succes
     if (res.statusCode == 200) {
-      Map<String, dynamic> json = jsonDecode(res.body);
+      Map<dynamic, dynamic> json = jsonDecode(res.body);
 
       List<dynamic> body = json['result'];
       List<Result> money =
