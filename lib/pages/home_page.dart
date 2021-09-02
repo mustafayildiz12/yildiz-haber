@@ -5,7 +5,6 @@ import 'package:turkey_news/constants/constants.dart';
 import 'package:turkey_news/model/article_model.dart';
 import 'package:turkey_news/services/api_service.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -28,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   List<Icon> icons = [
     const Icon(
       Icons.bookmark,
+      color: Colors.white,
     ),
     const Icon(
       Icons.health_and_safety,
@@ -86,8 +86,8 @@ class _HomePageState extends State<HomePage> {
                               height: size.width / 4,
                               decoration: BoxDecoration(
                                   color: currentIndex == index
-                                      ? const Color(0xFF5DBDBD)
-                                      : const Color(0xFFFF6F6F),
+                                      ? const Color(0xFFBF00C2)
+                                      : const Color(0xFF811969),
                                   borderRadius: BorderRadius.circular(12)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,

@@ -21,7 +21,7 @@ class _DovizPageState extends State<DovizPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: mainAppBar(fifth, "DÖVİZ"),
-        backgroundColor: Color(0xFF8AD6F1),
+        backgroundColor: Color(0xFF5BBC7F),
         body: Column(
           children: [
             Table(
@@ -39,7 +39,7 @@ class _DovizPageState extends State<DovizPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 21,
+                          fontSize: 19,
                           fontWeight: FontWeight.normal),
                     ),
                     Text(
@@ -47,7 +47,7 @@ class _DovizPageState extends State<DovizPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 21,
+                          fontSize: 19,
                           fontWeight: FontWeight.normal),
                     ),
                     Text(
@@ -55,7 +55,7 @@ class _DovizPageState extends State<DovizPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 21,
+                          fontSize: 19,
                           fontWeight: FontWeight.normal),
                     ),
                   ]),

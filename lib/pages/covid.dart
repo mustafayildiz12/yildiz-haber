@@ -45,7 +45,6 @@ class _CovidVeriState extends State<CovidVeri> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-
                                 Text(
                                   formattedDate,
                                   style: TextStyle(
@@ -54,15 +53,13 @@ class _CovidVeriState extends State<CovidVeri> {
                               ],
                             ),
                           ),
-
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 4),
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
                             child: Text(
                               "Günlük veriler akşam saatlerinde güncellenmektedir !!",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 18, color: Colors.white),
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
                             ),
                           ),
                           SizedBox(
@@ -131,6 +128,4 @@ class _CovidVeriState extends State<CovidVeri> {
           },
         ));
   }
-
-
 }
