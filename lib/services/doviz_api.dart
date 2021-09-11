@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
@@ -34,20 +33,6 @@ class DovizApi {
       body.map((dynamic item) => Result.fromJson(item)).toList();
 
       return money;
-    } else {
-      throw ("Can't get the Articles");
-    }
-  }
-
-  Future getHtml() async {
-    Response res = await http.get(
-      Uri.parse(
-          "https://namazvakitleri.diyanet.gov.tr/tr-TR/9146/adana-icin-namaz-vakti"),
-    );
-
-    if (res.statusCode == 200) {
-      var doc = parse(res.body);
-      print("Sabah Namazı :${doc.getElementById("tpt-time")}");
     } else {
       throw ("Can't get the Articles");
     }
