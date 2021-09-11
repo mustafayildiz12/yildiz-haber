@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget havaContainer(String gun, String durum, String deger, String url) {
+Widget havaContainer(
+    String gun, String durum, String deger, String url, BuildContext context) {
+  Size size = MediaQuery.of(context).size;
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
     child: Container(
@@ -10,38 +12,29 @@ Widget havaContainer(String gun, String durum, String deger, String url) {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
             gun,
             textAlign: TextAlign.center,
             style: TextStyle(
+              fontWeight: FontWeight.w600,
               color: Color(0xFF8AD6F1),
               fontSize: 27,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
           Container(
-            width: 130,
-            height: 120,
+            width: size.width /4,
+            height: size.width /4,
             child: SvgPicture.network(
               url,
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(
-            height: 5,
-          ),
           Text(
             durum,
             textAlign: TextAlign.center,
             style: TextStyle(color: Color(0xFF8AD6F1), fontSize: 22),
-          ),
-          SizedBox(
-            height: 10,
           ),
           Text(
             deger,

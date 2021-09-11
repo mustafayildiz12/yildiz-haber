@@ -7,27 +7,27 @@ class OnBoarding extends StatelessWidget {
   final List<Introduction> list = [
     Introduction(
       title: 'SICAK GÜNDEM',
-      subTitle: 'Ülkemizde yaşanan gelişmeler anında cebinize gelsin.',
+      subTitle: '',
       imageUrl: 'assets/undraw/news.png',
     ),
     Introduction(
       title: 'KOVİD-19',
-      subTitle: 'Günlük vaka sayılarını site site gezmeyi bırakın.',
+      subTitle: '',
       imageUrl: 'assets/undraw/covid.png',
     ),
     Introduction(
       title: 'HAVA DURUMU',
-      subTitle: 'Her şehrin 1 haftalık hava durumu bilgisi artık cebinizde.',
+      subTitle: '',
       imageUrl: 'assets/undraw/weather.png',
     ),
     Introduction(
       title: 'NAMAZ VAKİTLERİ',
-      subTitle: 'Günlük namaz vakitleri artık cebinizde',
+      subTitle: '',
       imageUrl: 'assets/undraw/clock.png',
     ),
     Introduction(
       title: 'DÖVİZ',
-      subTitle: 'Borsa sevenleri de unutmadık.',
+      subTitle: '',
       imageUrl: 'assets/undraw/doviz.png',
     ),
   ];

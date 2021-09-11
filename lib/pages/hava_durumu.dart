@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:turkey_news/components/main_app_bar.dart';
 import 'package:turkey_news/components/weather_box.dart';
 import 'package:turkey_news/constants/constants.dart';
+import 'package:turkey_news/pages/hava_detay_page.dart';
 import 'package:turkey_news/services/api_service.dart';
 
 import '../model/weather_model.dart';
@@ -90,13 +91,20 @@ class _HavaDurumuState extends State<HavaDurumu> {
                                 itemCount: results!.length,
                                 itemBuilder: (context, index) =>
                                     GestureDetector(
-                                      onTap: ()=> print("$index"),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HavaDetay(
+                                                res: results[index],
+                                                sehir: t1.text)));
+                                  },
                                   child: havaContainer(
-                                    results[index].day,
-                                    results[index].description,
-                                    results[index].degree + " C",
-                                    results[index].icon,
-                                  ),
+                                      results[index].day.toUpperCase(),
+                                      results[index].description,
+                                      results[index].degree + " C",
+                                      results[index].icon,
+                                      context),
                                 ),
                               );
                             }
