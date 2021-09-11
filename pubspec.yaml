@@ -41,6 +41,8 @@ dependencies:
   fluttericon: ^2.0.0
   logger: ^1.1.0
 
+  intro_screen_onboarding_flutter: ^0.1.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

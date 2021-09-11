@@ -88,11 +88,15 @@ class _HavaDurumuState extends State<HavaDurumu> {
                                         mainAxisSpacing: 0),
                                 shrinkWrap: true,
                                 itemCount: results!.length,
-                                itemBuilder: (context, index) => havaContainer(
-                                  results[index].day,
-                                  results[index].description,
-                                  results[index].degree + " C",
-                                  results[index].icon,
+                                itemBuilder: (context, index) =>
+                                    GestureDetector(
+                                      onTap: ()=> print("$index"),
+                                  child: havaContainer(
+                                    results[index].day,
+                                    results[index].description,
+                                    results[index].degree + " C",
+                                    results[index].icon,
+                                  ),
                                 ),
                               );
                             }
@@ -109,6 +113,4 @@ class _HavaDurumuState extends State<HavaDurumu> {
               ],
             )));
   }
-
 }
-
